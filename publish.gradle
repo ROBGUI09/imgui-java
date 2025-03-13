@@ -12,13 +12,11 @@ ext.configurePublishing = { packageName, packageDesc, packageVersion ->
     publishing {
         repositories {
             maven {
-                name = 'MavenCentral'
-                def releasesRepoUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
-                def snapshotsRepoUrl = 'https://oss.sonatype.org/content/repositories/snapshots'
-                url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+                name = 'GitHubPackages'
+                url = "https://maven.pkg.github.com/octocat/hello-world"
                 credentials {
-                    username = System.getenv('NEXUS_UPD_ID')?.trim() ?: ''
-                    password = System.getenv('NEXUS_UPD_PASS')?.trim() ?: ''
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
                 }
             }
         }
