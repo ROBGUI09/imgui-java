@@ -139,9 +139,7 @@ jobs:
 
   release:
     name: Release
-    if: startsWith(github.ref, 'refs/tags/v') # if tag starts with "v"
     runs-on: ubuntu-latest
-    environment: main
     needs: [ build-java, archive-natives ]
     steps:
       - name: Checkout Repository
